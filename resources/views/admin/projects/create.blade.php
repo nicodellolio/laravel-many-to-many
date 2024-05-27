@@ -30,10 +30,27 @@
                     <option selected>Select a type</option>
 
                     @foreach ($types as $type)
-                        <option value="{{$type->id}}">{{$type->name}}</option>
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
                     @endforeach
 
                 </select>
+            </div>
+
+            <label class="form-label text-light fw-light" for="technology">Project Type</label>
+            <div class="mb-3 d-flex border border-light rounded gap-1 py-2">
+
+                @foreach ($technologies as $technology)
+                
+                    
+                
+                <div class="form-check ">
+                    
+                    <input type="checkbox" class="btn-check" id="tag-{{$technology->id}}" value="{{$technology->id}}" autocomplete="off" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                    <label class="btn text-light" for="tag-{{$technology->id}}">{{$technology->name}}</label>
+                    
+                </div>
+                
+                @endforeach
             </div>
 
 
