@@ -41,6 +41,8 @@ class ProjectController extends Controller
     {
         $validated = $request->validated();
 
+        // dd($validated);
+
         $slug = Str::slug($request->title);
         
         $validated['slug'] = $slug;
@@ -75,9 +77,12 @@ class ProjectController extends Controller
      */
     public function edit(Project $project, Type $type)
     {
+        
         $types = Type::all();
         $technologies = Technology::all();
+        // dd($project->$technologies);
         return view('admin.projects.edit', compact('project','types', 'technologies'));
+
     }
 
     /**
@@ -85,6 +90,7 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        // dd($request->all());
         $validated = $request->validated();
 
 
@@ -102,6 +108,10 @@ class ProjectController extends Controller
 
 
         $project->update($validated);
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($validated['technologies']);
+        }
+
         return to_route('admin.projects.show', compact('project'))->with('message', 'Post modified successfully');
     }
 

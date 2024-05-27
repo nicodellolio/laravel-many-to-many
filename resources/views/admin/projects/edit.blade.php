@@ -58,8 +58,8 @@
                 @foreach ($technologies as $technology)
                     @if ($errors->any())
                         <div class="form-check ">
+                            <h4 class="text-danger">error</h4>
 
-                            <h4>There are validation errros</h4>
 
                             <div class="form-check">
 
@@ -73,14 +73,14 @@
                         @else
                             <div class="form-check">
 
-                                <h4>No validation errros</h4>
-
+                                <h4 class="text-success">ok</h4>
                                 <input name="technologies[]" type="checkbox" class="btn-check"
                                     id="tag-{{ $technology->id }}" value="{{ $technology->id }}" autocomplete="off"
                                     {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
                                 <label class="btn text-light"
-                                    for="tag-{{ $technology->id }}">{{ $technology->name }}</label>
-                                    
+                                    for="tag-{{ $technology->id }}">{{ $technology->name }}
+                                </label>
+
                             </div>
                     @endif
                 @endforeach
