@@ -52,7 +52,11 @@ class ProjectController extends Controller
         }
 
 
-        Project::create($validated);
+        $project = Project::create($validated);
+        if ($request->has('technologies')) {
+            $project->technologies()->attach($validated['technologies']);
+        }
+        
         return to_route('admin.projects.index')->with('message', 'Post created successfully');
     }
 

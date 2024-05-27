@@ -41,11 +41,9 @@
 
                 @foreach ($technologies as $technology)
                 
-                    
-                
                 <div class="form-check ">
                     
-                    <input type="checkbox" class="btn-check" id="tag-{{$technology->id}}" value="{{$technology->id}}" autocomplete="off" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                    <input name="technologies[]" type="checkbox" class="btn-check" id="tag-{{$technology->id}}" value="{{$technology->id}}" autocomplete="off" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
                     <label class="btn text-light" for="tag-{{$technology->id}}">{{$technology->name}}</label>
                     
                 </div>
