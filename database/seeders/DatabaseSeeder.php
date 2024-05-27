@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Project;
-use App\Models\Type;
+use Database\Seeders\ProjectSeeder;
+use Database\Seeders\TypeSeeder;
+use Database\Seeders\TechnologySeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,7 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Project::class;
-        Type::class;
+        $this->call([
+            ProjectSeeder::class,
+            TypeSeeder::class,
+            TechnologySeeder::class
+        ]);
     }
 }
