@@ -150,7 +150,7 @@
                     class="btn btn-info rounded-3 fw-light text-secondary btn-sm fs-2 px-3 py-1">Submit</button>
 
                 <a class="btn btn-secondary rounded-3 fw-light text-light btn-sm fs-2 px-3 py-1"
-                    href="{{ route('admin.projects.index') }}" role="button">
+                    href="{{ url()->previous() }}" role="button">
                     Go back
                 </a>
             </div>
