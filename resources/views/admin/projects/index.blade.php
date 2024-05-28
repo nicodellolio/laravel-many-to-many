@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="table-responsive ">
-            @include('partials.session-messages')
+            @include('partials.sessionProjects-messages')
 
             <table class="table table-light table-hover mt-5">
                 <thead class="">
