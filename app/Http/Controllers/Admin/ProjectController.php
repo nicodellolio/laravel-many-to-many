@@ -41,8 +41,6 @@ class ProjectController extends Controller
     {
         $validated = $request->validated();
 
-        // dd($validated);
-
         $slug = Str::slug($request->title);
         
         $validated['slug'] = $slug;
@@ -80,7 +78,6 @@ class ProjectController extends Controller
         
         $types = Type::all();
         $technologies = Technology::all();
-        // dd($project->$technologies);
         return view('admin.projects.edit', compact('project','types', 'technologies'));
 
     }
@@ -90,13 +87,11 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        // dd($request->all());
         $validated = $request->validated();
 
 
         if ($request->has('preview_image')) {
 
-            // dd($request->all());
 
             if ($project->preview_image) {
                 Storage::delete($project->preview_image);
@@ -106,10 +101,15 @@ class ProjectController extends Controller
             $validated['preview_image'] = $image_path;
         }
 
+        $technologies = Technology::all();
 
         $project->update($validated);
+
         if ($request->has('technologies')) {
             $project->technologies()->sync($validated['technologies']);
+        }
+        else {
+            $project->technologies()->sync([]);
         }
 
         return to_route('admin.projects.show', compact('project'))->with('message', 'Post modified successfully');

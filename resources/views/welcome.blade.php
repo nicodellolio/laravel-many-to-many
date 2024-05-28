@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
     <div class="jumbotron p-bg-lighter rounded-3 mt-5 mx-5 d-flex justify-content-evenly">
 

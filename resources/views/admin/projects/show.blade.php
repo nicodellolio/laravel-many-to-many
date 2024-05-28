@@ -7,18 +7,28 @@
 
             <div class="col">
                 <div class="card p-1">
-                    <div class="title_box d-flex bg-gradient align-items-center justify-content-between bg-secondary p-3">
+                    <div class="title_box d-flex bg-gradient justify-content-between bg-secondary p-3">
                         <h3 class="card-title text-light fw-bolder pt-2">
                             {{ $project->title }}
                         </h3>
-                        <a class="btn btn-light text-decoration-none text-secondary"
-                            href="{{ route('admin.projects.index') }}">
-                            <i class="fa-solid fa-circle-left"></i>
-                            Back to the projects</a>
+                        <div class="right-side d-flex gap-4 align-items-center">
+
+                            <a class="text-decoration-none text-dark btn btn-light border fs-6 py-1 align-items-center"
+                                href="{{ route('admin.projects.edit', $project) }}">
+                                <span class="btn btn-light">Edit your project</span> 
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <a class="btn btn-light text-decoration-none text-secondary py-2"
+                                href="{{ route('admin.projects.index') }}">
+                                <i class="fa-solid fa-circle-left"></i>
+                                Back to the projects
+                            </a>
+
+                        </div>
                     </div>
 
-                    
-                    
+
+
                     <div class="card-body text-secondary">
                         <h5 class="d-inline-block">Description:</h5>
                         <p class="card-text">
@@ -34,13 +44,15 @@
 
                             <h5 class="d-inline-block">Technology:</h5>
 
-                            @foreach ($project->technologies as $key => $technology)
-                                <ul class="d-flex">
-                                    <li class="m-1">
-                                        {{ $technology->name }}
-                                    </li>
-                                </ul>
-                            @endforeach
+                            <div class="technologies">
+                                @forelse ($project->technologies as $technology)
+                                    <span class="badge p-bg-light">{{ $technology->name }}</span>
+
+                                @empty
+
+                                    <span class="badge p-bg-light">n/a</span>
+                                @endforelse
+                            </div>
                         </div>
 
                         <hr>
@@ -68,7 +80,8 @@
 
 
                     <div class="img_box">
-                        <img class="card-img-bottom" src="{{ asset('storage/' . $project->preview_image) }}" alt="">
+                        <img class="card-img-bottom" src="{{ asset('storage/' . $project->preview_image) }}"
+                            alt="">
                         <span class="position-absolute bottom-0 start-0 text-dark bg-info rounded px-3 py-1 m-2">
                             Website preview
                         </span>

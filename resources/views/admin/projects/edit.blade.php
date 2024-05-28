@@ -73,10 +73,9 @@
                         @else
                             <div class="form-check">
 
-                                <h4 class="text-success">ok</h4>
                                 <input name="technologies[]" type="checkbox" class="btn-check"
                                     id="tag-{{ $technology->id }}" value="{{ $technology->id }}" autocomplete="off"
-                                    {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                                    {{ in_array($technology->id, $project->technologies->pluck('id')->toArray()) ? 'checked' : '' }}>
                                 <label class="btn text-light"
                                     for="tag-{{ $technology->id }}">{{ $technology->name }}
                                 </label>
