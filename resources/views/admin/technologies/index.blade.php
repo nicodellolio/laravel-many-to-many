@@ -37,12 +37,22 @@
             <div class="col gy-2 gx-2 px-3  rounded rounded -5">
                 <div class="card text-light p-bg-lighter ps-2 d-flex flex-row justify-content-between">
                     <div class="title">
-                        <h4 class="card-title">
-                            {{$technology->name}}
-                        </h4>
-                        <small class="card-subtitle">
-                            {{$technology->slug}}
-                        </small>
+
+                        <form action="{{ route('admin.technologies.update', $technology) }}" method="post">
+                            @csrf
+                            @method('PUT')
+
+                            <h4 class="card-title">
+                                <input type="text" class="form-control bg-transparent border-0 text-light fs-4" name="name" id="name" aria-describedby="nameHelp"
+                                placeholder="ex.HTML, CSS, PHP..." value="{{$technology->name}}">
+                            </h4>
+
+                            <small class="card-subtitle ms-3">
+                                {{$technology->slug}}
+                            </small>
+
+                        </form>
+                        
                     </div>
                     <div class="card-body text-end">
                         Used on {{$technology->projects->count()}} projects
