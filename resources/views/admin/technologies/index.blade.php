@@ -54,7 +54,7 @@
                         </form>
                         
                     </div>
-                    <div class="card-body text-end">
+                    <div class="card-body text-end align-items-center pt-4">
                         Used on {{$technology->projects->count()}} projects
                     </div>
                     <div class="delete align-self-center me-2">

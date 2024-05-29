@@ -66,11 +66,11 @@ class TechnologyController extends Controller
     {
         $validated = $request->validated();
 
-        $technology->update($validated);
-
+        
         $slug = Str::slug($request->name);
         $validated['slug'] = $slug;
-
+        
+        $technology->update($validated);
         
         return to_route('admin.technologies.index')->with('message', 'Technology name modified successfully');
     }

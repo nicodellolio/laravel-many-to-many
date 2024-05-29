@@ -6,7 +6,7 @@
         <div class="table-responsive ">
             @include('partials.sessionProjects-messages')
 
-            <table class="table table-light table-hover mt-5">
+            <table class="table table-secondary table-hover mt-5">
                 <thead class="">
                     <tr class="fw-bolder fs-5 table-secondary">
                         <th scope="col">Title</th>
