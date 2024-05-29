@@ -6,9 +6,9 @@
         <div class="table-responsive ">
             @include('partials.sessionProjects-messages')
 
-            <table class="table table-secondary table-hover mt-5">
+            <table class="table p-bg-table table-hover mt-5">
                 <thead class="">
-                    <tr class="fw-bolder fs-5 table-secondary">
+                    <tr class="fw-bolder fs-5 p-bg-table-head">
                         <th scope="col">Title</th>
                         <th scope="col">Description</th>
                         <th scope="col">Project Start</th>
@@ -24,7 +24,7 @@
 
                         <td colspan="7" height="80" class="align-middle text-center fw-bolder" scope="row">
 
-                            <a class="text-decoration-none text-success fs-5" href="{{ route('admin.projects.create') }}">
+                            <a class="text-decoration-none text-warning fw-light fs-5" href="{{ route('admin.projects.create') }}">
 
                                 Add a new project
 
